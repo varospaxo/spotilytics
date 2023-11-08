@@ -40,7 +40,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
 4. Once Spotilytics is running, select the zip file (for GUI) or provide the path to the zip file without quotes (for CLI).
 5. The data will be extracted automatically and displayed as output.
 
-## Features Spotilytics
+## Features of Spotilytics
 &#9679; Extracts Account Identity Data.<br>
 &#9679; Extracts Personal User Data.<br>
 &#9679; Shows total playtime.<br>
