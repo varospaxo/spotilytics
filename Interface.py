@@ -180,15 +180,25 @@ app.iconbitmap('spotilytics.ico')
 frame = tk.Frame(app)
 frame.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
-select_button = tk.Button(frame, text="Select ZIP File", command=process_zip, bg="#1DB954", fg="#191414")
-select_button.grid(row=0, column=0)
+# Load and display an image before the button
+image = PhotoImage(file="Spotilytics.png")  # Replace with the path to your image file
+image = image.subsample(10)  # Subsample the image to fit in a 500x175 area
+image_label = tk.Label(frame, image=image)
+image_label.grid(row=0, column=0, padx=10, pady=10)
 
-# Create a text widget for displaying the results and make it expandable
-result_text = tk.Text(app, wrap=tk.WORD, width=60, height=15)
-result_text.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky="nsew")
+select_button = tk.Button(frame, text="Select ZIP File", command=process_zip, bg="#1DB954", fg="#191414", width=45, height=3)
+select_button.grid(row=1, column=0, padx=10, pady=10)
+
+# Increase the button text size
+button_font = ("Helvetica", 12)  # You can adjust the font size (12) as needed
+select_button.config(font=button_font)
+
+# Create a text widget for displaying the results and make it longer
+result_text = tk.Text(app, wrap=tk.WORD, width=80, height=25)  # Adjust the width and height as needed
+result_text.grid(row=2, column=0, columnspan=2, padx=10, pady=10, sticky="nsew")
 
 # Configure row and column weights to make the text widget expandable
-app.grid_rowconfigure(1, weight=1)
+app.grid_rowconfigure(2, weight=1)
 app.grid_columnconfigure(0, weight=1)
 
 # Set the background and foreground colors for the text widget
