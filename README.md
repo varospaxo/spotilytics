@@ -3,7 +3,7 @@
 ![Spotilytics](https://github.com/varospaxo/spotilytics/assets/64273563/9bb683d3-1437-479e-ad5c-32109f8e2fb0)
 
 
-Why wait for Spotify Wrapped when you can download your own data anytime and view your streaming history all year round using Spotilytics. Spotilytics provides you with multiple interfaces to extract data from your Spotify account. Currently works only on Windows OS with Python 10.0+ installed.
+Why wait for Spotify Wrapped when you can download your own data anytime and view your streaming history all year round using Spotilytics. Spotilytics provides you with multiple interfaces to extract data from your Spotify account. Currently works only on Windows OS with Python 3.10+ installed.
 
 You might wonder, why not use the Spotify API? Well, the Spotify API requires user login and can be a privacy concern for some individuals. Therefore, downloading your entire data offline and analyzing it with this open-source tool makes more sense.
 
