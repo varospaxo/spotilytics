@@ -21,19 +21,19 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
 ```sh
  git clone https://github.com/varospaxo/spotilytics/
  ```
-2. Change your directory to 'spotilytics':
+2. Change your directory to `spotilytics`:
   ```sh
    cd spotilytics
    ```
-3. To run 'Spotilytics GUI', use the command:
+3. To run `Spotilytics GUI`, use the command:
   ```sh
    python Interface.py
    ```
-<B>OR</B> To run 'Spotilytics CLI', use the command:
+<B>OR</B> To run `Spotilytics CLI`, use the command:
   ```sh
    python Grand.py
    ```
-<B>OR</B> To run 'Spotilytics CLI' and get HTML output, use the command:
+<B>OR</B> To run `Spotilytics CLI` and get HTML output, use the command:
   ```sh
    python Flask.py
    ```
