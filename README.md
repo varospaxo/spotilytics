@@ -33,7 +33,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
   ```sh
    python Grand.py
    ```
-<B>OR</B> To run `Spotilytics CLI` and get HTML output, use the command:
+<B>OR</B> To run `Spotilytics CLI with HTML output`, use the command:
   ```sh
    python Flask.py
    ```
