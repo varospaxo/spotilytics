@@ -82,11 +82,13 @@ def process_zip():
             top_10_artists = find_top_n(all_data, "master_metadata_album_artist_name", 10)
             top_10_albums = find_top_n(all_data, "master_metadata_album_album_name", 10)
             unique_devices = set(entry["platform"] for entry in all_data)
+            total_play_count = len(all_data)
 
             # Display results
             result_text.insert(tk.END, "\n\n---Streaming Analytics---\n")
             result_text.insert(tk.END, f"Start of dataset: {data_start}\nEnd of dataset: {data_end}\n\n")
             result_text.insert(tk.END, f"Total Playtime: {total_listening_time:.2f} minutes\n")
+            result_text.insert(tk.END, f"Total Play Count: {total_play_count} times\n")
             result_text.insert(tk.END, f"Most Active Hour: {most_active_time_range}\n")
 
             result_text.insert(tk.END, "\nTop 10 Tracks:\n")
