@@ -29,7 +29,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
   ```sh
    python Interface.py
    ```
-<B>OR</B> To run `Spotilytics CLI (Extended Streaming History)`, use the command:
+<B>OR</B> To run `Spotilytics GUI (Extended Streaming History)`, use the command:
   ```sh
    python Extended.py
    ```
