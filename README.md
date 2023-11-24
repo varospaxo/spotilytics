@@ -10,7 +10,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
 ## Steps to Get the Data
 
 1. Go to [Spotify Account Privacy Settings](https://www.spotify.com/us/account/privacy/).
-2. Select 'Account Data' (Preparation time: 5 days).
+2. Select 'Account Data' (Preparation time: 5 days). #Extended streaming history also supported!
 3. Click on the link in the confirmation email sent to your inbox.
 4. Wait for 5 days to receive your Spotify data.
 5. Once the data is received, download the zip file and save it.
@@ -29,6 +29,10 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
   ```sh
    python Interface.py
    ```
+<B>OR</B> To run `Spotilytics CLI (Extended Streaming History)`, use the command:
+  ```sh
+   python Extended.py
+   ```
 <B>OR</B> To run `Spotilytics CLI`, use the command:
   ```sh
    python Grand.py
@@ -44,6 +48,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
 &#9679; Extracts Account Identity Data.<br>
 &#9679; Extracts Personal User Data.<br>
 &#9679; Shows total playtime.<br>
+&#9679; Shows Most Active Hour.<br>
 &#9679; Displays Top 10 Tracks from last year.<br>
 &#9679; Displays Top 10 Artists from last year.<br>
 &#9679; Shows Top 10 Search Queries from last year.<br>
