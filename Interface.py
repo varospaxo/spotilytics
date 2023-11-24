@@ -82,15 +82,17 @@ def process_zip():
             # You can perform data analysis on this combined data as shown in your previous code
             # ...
 
-            # Create dictionaries to store total playtime for artists and tracks
+            # Create dictionaries to store total playtime and play count for artists and tracks
             artist_playtime = {}
+            artist_playcount = {}
             track_playtime = {}
+            track_playcount = {}
 
             # Extract the endTime of the first and last result
             first_end_time = all_data[0]["endTime"]
             last_end_time = all_data[-1]["endTime"]
 
-            # Calculate the total playtime for each artist and track in minutes
+            # Calculate the total playtime and play count for each artist and track in minutes
             for entry in all_data:  # Use all_data instead of data
                 artist_name = entry["artistName"]
                 track_name = entry["trackName"]
@@ -99,25 +101,30 @@ def process_zip():
                 # Convert milliseconds to minutes
                 minutes_played = ms_played / 60000  # 1 minute = 60000 ms
 
-                # Update the artist playtime
+                # Update the artist playtime and play count
                 if artist_name in artist_playtime:
                     artist_playtime[artist_name] += minutes_played
+                    artist_playcount[artist_name] += 1
                 else:
                     artist_playtime[artist_name] = minutes_played
+                    artist_playcount[artist_name] = 1
 
-                # Update the track playtime
+                # Update the track playtime and play count
                 track_key = (artist_name, track_name)
                 if track_key in track_playtime:
                     track_playtime[track_key] += minutes_played
+                    track_playcount[track_key] += 1
                 else:
                     track_playtime[track_key] = minutes_played
+                    track_playcount[track_key] = 1
 
             # Sort the artists and tracks by total playtime in descending order
             top_artists = sorted(artist_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
             top_tracks = sorted(track_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
 
-            # Calculate the total playtime in minutes
+            # Calculate the total playtime and play count in minutes
             total_playtime_minutes = sum(entry["msPlayed"] / 60000 for entry in all_data)
+            total_play_count = len(all_data)
 
             result_text.insert(tk.END, f"\n\n---Streaming Analytics---")
 
@@ -126,15 +133,17 @@ def process_zip():
             result_text.insert(tk.END, f"\nEnd of dataset: {last_end_time}")
 
             result_text.insert(tk.END, f"\n\nTotal Playtime: {total_playtime_minutes:.2f} minutes")
+            result_text.insert(tk.END, f"\nTotal Play Count: {total_play_count} times")
 
             result_text.insert(tk.END, f"\n\nTop 10 Tracks:")
-            for i, (track_key, total_track_playtime) in enumerate(top_tracks, 1):
-                artist_name, track_name = track_key
-                result_text.insert(tk.END, f"\n{i}. {track_name} by {artist_name} - {total_track_playtime:.2f} minutes")
+            for i, ((artist_name, track_name), total_track_playtime) in enumerate(top_tracks, 1):
+                result_text.insert(tk.END, f"\n{i}. {track_name} by {artist_name} - {total_track_playtime:.2f} minutes"
+                                      f" ({track_playcount[(artist_name, track_name)]} times)")
 
             result_text.insert(tk.END, f"\n\nTop 10 Artists:")
             for i, (artist_name, total_artist_playtime) in enumerate(top_artists, 1):
-                result_text.insert(tk.END, f"\n{i}. {artist_name} - {total_artist_playtime:.2f} minutes")
+                result_text.insert(tk.END, f"\n{i}. {artist_name} - {total_artist_playtime:.2f} minutes"
+                                      f" ({artist_playcount[artist_name]} times)")
 
             # Replace 'your_file.json' with the path to your UTF-8 encoded JSON file
             file_path = directory + 'SearchQueries.json'
