@@ -51,12 +51,12 @@ def process_zip():
 
         if unzipped_dir:
             result_text.delete(1.0, tk.END)  # Clear previous results
-            result_text.insert(tk.END, f"Unzipped to: {unzipped_dir}\n")
+            result_text.insert(tk.END, f"Unzipped to: {unzipped_dir}".replace("\\", "/"))
             result_text.config(foreground="#1DB954", background="#191414")  # Set text colors
 
             # Specify the directory where your JSON files are located
             directory = str(unzipped_dir+'\\Spotify Extended Streaming History\\')  # Replace with the actual directory path
-            result_text.insert(tk.END, f"\nWorking Directory: {directory}")
+            result_text.insert(tk.END, f"\nWorking Directory: {directory}".replace("\\", "/"))
 
             # Initialize a list to store data from all JSON files
             all_data = []
