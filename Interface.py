@@ -5,6 +5,8 @@ from tkinter import filedialog
 import zipfile
 import os
 import json
+from collections import defaultdict
+from datetime import datetime
 
 def extract_zip(zip_file_path):
     try:
@@ -134,6 +136,20 @@ def process_zip():
 
             result_text.insert(tk.END, f"\n\nTotal Playtime: {total_playtime_minutes:.2f} minutes")
             result_text.insert(tk.END, f"\nTotal Play Count: {total_play_count} times")
+            
+            # Initialize a dictionary to store play frequency for each hour of the day
+            hour_play_count = defaultdict(int)
+
+            # Convert endTime to hour and update the play count for each hour
+            for entry in all_data:
+                end_time_str = entry["endTime"]
+                end_time = datetime.strptime(end_time_str, "%Y-%m-%d %H:%M")
+                hour_play_count[end_time.hour] += 1
+
+            # Find the most active hour range
+            most_active_hour = max(hour_play_count, key=hour_play_count.get)
+            most_active_hour_range = f"{most_active_hour:02}:00 - {most_active_hour + 1:02}:00"
+            result_text.insert(tk.END, f"\nMost Active Hour: {most_active_hour_range}")
 
             result_text.insert(tk.END, f"\n\nTop 10 Tracks:")
             for i, ((artist_name, track_name), total_track_playtime) in enumerate(top_tracks, 1):
@@ -180,7 +196,7 @@ def process_zip():
 
 # Create the main application window
 app = tk.Tk()
-app.title("Spotilytics")
+app.title("Spotilytics (Account Data)")
 
 # Change the application icon (replace 'your_icon.ico' with your icon file path)
 app.iconbitmap('spotilytics.ico')
