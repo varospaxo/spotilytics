@@ -1,4 +1,4 @@
-# Spotilytics: Your Spotify Streaming History Anytime
+#Spotilytics: Your Spotify Streaming History Anytime
 
 ![Spotilytics](https://github.com/varospaxo/spotilytics/assets/64273563/9bb683d3-1437-479e-ad5c-32109f8e2fb0)
 
