@@ -24,13 +24,21 @@ def extract_zip(zip_file_path):
         return str(e)
 
 def process_zip():
+    try:
+        x = int(x_entry.get())
+        if x <= 0:
+            raise ValueError("The value of x must be a positive integer.")
+    except ValueError:
+        result_text.delete(1.0, tk.END)
+        result_text.insert(tk.END, f"Error: No value entered for number of results. Defaulting to top 10 results.")
+        x=10
+
     zip_file_path = filedialog.askopenfilename(filetypes=[("ZIP Files", "*.zip")])
 
     if zip_file_path:
         unzipped_dir = extract_zip(zip_file_path)
 
         if unzipped_dir:
-            x=10
             result_text.delete(1.0, tk.END)  # Clear previous results
             result_text.insert(tk.END, f"Unzipped to: {unzipped_dir}".replace("\\", "/"))
             result_text.config(foreground="#1DB954", background="#191414")  # Set text colors
@@ -221,6 +229,13 @@ image = PhotoImage(file="Spotilytics.png")  # Replace with the path to your imag
 image = image.subsample(10)  # Subsample the image to fit in a 500x175 area
 image_label = tk.Label(frame, image=image)
 image_label.grid(row=0, column=0, padx=10, pady=10)
+
+x_label = tk.Label(frame, text="Enter number of top results (x):", fg="#191414")
+x_label.grid(row=2, column=0, sticky="w", padx=10, pady=5)
+
+x_entry = 10
+x_entry = tk.Entry(frame, width=10)
+x_entry.grid(row=2, column=0, sticky="e", padx=10, pady=5)
 
 select_button = tk.Button(frame, text="Select ZIP File", command=process_zip, bg="#1DB954", fg="#191414", width=45, height=3)
 select_button.grid(row=1, column=0, padx=10, pady=10)
