@@ -130,14 +130,14 @@ app = tk.Tk()
 app.title("Spotilytics (Extended Streaming History)")
 
 # Change the application icon (replace 'your_icon.ico' with your icon file path)
-app.iconbitmap('spotilytics.ico')
+app.iconbitmap('logo.ico')
 
 # Create and configure a frame for the file selection and extraction
 frame = tk.Frame(app)
 frame.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
 # Load and display an image before the button
-image = PhotoImage(file="Spotilytics.png")  # Replace with the path to your image file
+image = PhotoImage(file="logo.png")  # Replace with the path to your image file
 image = image.subsample(10)  # Subsample the image to fit in a 500x175 area
 image_label = tk.Label(frame, image=image)
 image_label.grid(row=0, column=0, padx=10, pady=10)
