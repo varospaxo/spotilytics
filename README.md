@@ -49,9 +49,9 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
 &#9679; Extracts Personal User Data.<br>
 &#9679; Shows total playtime for last year / extended history.<br>
 &#9679; Shows Most Active Hour.<br>
-&#9679; Displays Top 10 Tracks from last year / extended history.<br>
-&#9679; Displays Top 10 Artists from last year / extended history.<br>
-&#9679; Shows Top 10 Search Queries from last year.<br>
+&#9679; Displays Top Tracks from last year / extended history.<br>
+&#9679; Displays Top Artists from last year / extended history.<br>
+&#9679; Shows Top Search Queries from last year.<br>
 
 Enjoy exploring your Spotify streaming history throughout the year with Spotilytics!<br>
 
