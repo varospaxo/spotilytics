@@ -50,6 +50,7 @@ def process_zip():
         unzipped_dir = extract_zip(zip_file_path)
 
         if unzipped_dir:
+            x=10
             result_text.delete(1.0, tk.END)  # Clear previous results
             result_text.insert(tk.END, f"Unzipped to: \n{unzipped_dir}".replace("\\", "/"))
             result_text.config(foreground="#1DB954", background="#191414")  # Set text colors
@@ -78,9 +79,9 @@ def process_zip():
             total_listening_time = calculate_total_listening_time(all_data)
             most_active_time_range = find_most_active_time_range(all_data)
             data_start, data_end = find_data_start_and_end_span(all_data)
-            top_10_tracks = find_top_n(all_data, "master_metadata_track_name", 10)
-            top_10_artists = find_top_n(all_data, "master_metadata_album_artist_name", 10)
-            top_10_albums = find_top_n(all_data, "master_metadata_album_album_name", 10)
+            top_10_tracks = find_top_n(all_data, "master_metadata_track_name", x)
+            top_10_artists = find_top_n(all_data, "master_metadata_album_artist_name", x)
+            top_10_albums = find_top_n(all_data, "master_metadata_album_album_name", x)
             unique_devices = set(entry["platform"] for entry in all_data)
             total_play_count = len(all_data)
 

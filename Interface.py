@@ -30,6 +30,7 @@ def process_zip():
         unzipped_dir = extract_zip(zip_file_path)
 
         if unzipped_dir:
+            x=10
             result_text.delete(1.0, tk.END)  # Clear previous results
             result_text.insert(tk.END, f"Unzipped to: {unzipped_dir}".replace("\\", "/"))
             result_text.config(foreground="#1DB954", background="#191414")  # Set text colors
@@ -131,8 +132,8 @@ def process_zip():
                     track_playcount[track_key] = 1
 
             # Sort the artists and tracks by total playtime in descending order
-            top_artists = sorted(artist_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
-            top_tracks = sorted(track_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
+            top_artists = sorted(artist_playtime.items(), key=lambda x: x[1], reverse=True)[:x]
+            top_tracks = sorted(track_playtime.items(), key=lambda x: x[1], reverse=True)[:x]
 
             # Calculate the total playtime and play count in minutes
             total_playtime_minutes = sum(entry["msPlayed"] / 60000 for entry in all_data)
@@ -192,7 +193,7 @@ def process_zip():
             sorted_search_queries = sorted(search_query_freq.items(), key=lambda x: x[1], reverse=True)
 
             # Get the top 10 unique search queries
-            top_10_search_queries = sorted_search_queries[:10]
+            top_10_search_queries = sorted_search_queries[:x]
 
             # Display the top 10 search queries and their frequencies
             result_text.insert(tk.END, f"\n\nTop 10 Search Queries:")
