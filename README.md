@@ -58,6 +58,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
 &#9679; Displays Top Tracks from last year / extended history.<br>
 &#9679; Displays Top Artists from last year / extended history.<br>
 &#9679; Shows Top Search Queries from last year.<br>
+&#9679; Data can be exported as pdf.<br>
 
 Enjoy exploring your Spotify streaming history throughout the year with Spotilytics!<br>
 
