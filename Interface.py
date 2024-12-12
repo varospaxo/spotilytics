@@ -162,12 +162,12 @@ def process_zip():
             most_active_hour_range = f"{most_active_hour:02}:00 - {most_active_hour + 1:02}:00"
             result_text.insert(tk.END, f"\nMost Active Hour: {most_active_hour_range}")
 
-            result_text.insert(tk.END, f"\n\nTop 10 Tracks:")
+            result_text.insert(tk.END, f"\n\nTop {x} Tracks:")
             for i, ((artist_name, track_name), total_track_playtime) in enumerate(top_tracks, 1):
                 result_text.insert(tk.END, f"\n{i}. {track_name} by {artist_name} - {total_track_playtime:.2f} minutes"
                                       f" ({track_playcount[(artist_name, track_name)]} times)")
 
-            result_text.insert(tk.END, f"\n\nTop 10 Artists:")
+            result_text.insert(tk.END, f"\n\nTop {x} Artists:")
             for i, (artist_name, total_artist_playtime) in enumerate(top_artists, 1):
                 result_text.insert(tk.END, f"\n{i}. {artist_name} - {total_artist_playtime:.2f} minutes"
                                       f" ({artist_playcount[artist_name]} times)")
@@ -196,7 +196,7 @@ def process_zip():
             top_10_search_queries = sorted_search_queries[:x]
 
             # Display the top 10 search queries and their frequencies
-            result_text.insert(tk.END, f"\n\nTop 10 Search Queries:")
+            result_text.insert(tk.END, f"\n\nTop {x} Search Queries:")
             for i, (query, frequency) in enumerate(top_10_search_queries, 1):
                 result_text.insert(tk.END, f"\n{i}. '{query}' - {frequency} times")
 

@@ -92,17 +92,17 @@ def process_zip():
             result_text.insert(tk.END, f"Total Play Count: {total_play_count} times\n")
             result_text.insert(tk.END, f"Most Active Hour: {most_active_time_range}\n")
 
-            result_text.insert(tk.END, "\nTop 10 Tracks:\n")
+            result_text.insert(tk.END, f"\nTop {x} Tracks:\n")
             for i, (track, count) in enumerate(top_10_tracks, start=1):
                 minutes_played = sum(entry['ms_played'] for entry in all_data if entry['master_metadata_track_name'] == track) / 60000
                 result_text.insert(tk.END, f"{i}. {track} - {minutes_played:.2f} minutes ({count} times)\n")
 
-            result_text.insert(tk.END, "\nTop 10 Artists:\n")
+            result_text.insert(tk.END, f"\nTop {x} Artists:\n")
             for i, (artist, count) in enumerate(top_10_artists, start=1):
                 minutes_played = sum(entry['ms_played'] for entry in all_data if entry['master_metadata_album_artist_name'] == artist) / 60000
                 result_text.insert(tk.END, f"{i}. {artist} - {minutes_played:.2f} minutes ({count} times)\n")
 
-            result_text.insert(tk.END, "\nTop 10 Albums:\n")
+            result_text.insert(tk.END, f"\nTop {x} Albums:\n")
             for i, (album, count) in enumerate(top_10_albums, start=1):
                 result_text.insert(tk.END, f"{i}. {album} - {count} times\n")
 
