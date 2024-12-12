@@ -19,7 +19,9 @@ def extract_zip(zip_file_path):
 
 if __name__ == "__main__":
     zip_file_path = input("Enter the path to the ZIP file: ")
-
+    x=10
+    x=int(input("Enter the number of top artists and tracks to display: "))
+    
     unzipped_dir = extract_zip(zip_file_path)
 
     if unzipped_dir:
@@ -28,7 +30,12 @@ if __name__ == "__main__":
         print("\nError occurred while unzipping the file.")
 
 # Specify the directory where your JSON files are located
-directory = str(unzipped_dir+'/MyData/')  # Replace with the actual directory path
+    if os.path.exists(os.path.join(unzipped_dir, "MyData/")):
+        directory = os.path.join(unzipped_dir, "MyData/")
+    elif os.path.exists(os.path.join(unzipped_dir, "Spotify Account Data/")):
+        directory = os.path.join(unzipped_dir, "Spotify Account Data/")
+    else:
+        print("\nError: Neither 'MyData' nor 'Spotify Account Data' folder found in the unzipped directory.")
 print ("Working Directory: " + directory)
 # Read and display data from Identity.json
 identityloc = str(directory+'Identity.json')
@@ -63,7 +70,7 @@ all_data = []
 
 # Loop through files in the directory
 for filename in os.listdir(directory):
-    if filename.startswith("StreamingHistory") and filename.endswith(".json"):
+    if filename.startswith("StreamingHistory") and filename.endswith(".json") and not filename.startswith("StreamingHistory_podcast_"):
         # Construct the full file path
         file_path = os.path.join(directory, filename)
 
@@ -109,8 +116,8 @@ for entry in all_data:  # Use all_data instead of data
         track_playtime[track_key] = minutes_played
 
 # Sort the artists and tracks by total playtime in descending order
-top_artists = sorted(artist_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
-top_tracks = sorted(track_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
+top_artists = sorted(artist_playtime.items(), key=lambda x: x[1], reverse=True)[:x]
+top_tracks = sorted(track_playtime.items(), key=lambda x: x[1], reverse=True)[:x]
 
 # Calculate the total playtime in minutes
 total_playtime_minutes = sum(entry["msPlayed"] / 60000 for entry in all_data)
@@ -153,7 +160,7 @@ for entry in data:
 sorted_search_queries = sorted(search_query_freq.items(), key=lambda x: x[1], reverse=True)
 
 # Get the top 10 unique search queries
-top_10_search_queries = sorted_search_queries[:10]
+top_10_search_queries = sorted_search_queries[:x]
 
 # Display the top 10 search queries and their frequencies
 print("\nTop 10 Search Queries:")

@@ -34,9 +34,18 @@ def process_zip():
             result_text.insert(tk.END, f"Unzipped to: {unzipped_dir}".replace("\\", "/"))
             result_text.config(foreground="#1DB954", background="#191414")  # Set text colors
 
-            # Specify the directory where your JSON files are located
-            directory = str(unzipped_dir+'\\MyData\\')  # Replace with the actual directory path
-            result_text.insert(tk.END, f"\nWorking Directory: {directory}".replace("\\", "/"))
+            # Determine which directory exists: MyData or MyHistory
+            if os.path.exists(os.path.join(unzipped_dir, "MyData/")):
+                directory = os.path.join(unzipped_dir, "MyData/")
+            elif os.path.exists(os.path.join(unzipped_dir, "Spotify Account Data/")):
+                directory = os.path.join(unzipped_dir, "Spotify Account Data/")
+            else:
+                result_text.insert(tk.END, "\nError: Neither 'MyData' nor 'Spotify Account Data' folder found in the unzipped directory.")
+
+            # Ensure the directory uses forward slashes for consistency in display
+            directory = directory.replace("\\", "/")
+            result_text.insert(tk.END, f"\nWorking Directory: {directory}")
+
             # Read and display data from Identity.json
             identityloc = str(directory+'Identity.json')
             with open(identityloc, 'r', encoding='utf-8') as identity_file:
@@ -69,9 +78,10 @@ def process_zip():
 
             # Loop through files in the directory
             for filename in os.listdir(directory):
-                if filename.startswith("StreamingHistory") and filename.endswith(".json"):
+                if filename.startswith("StreamingHistory") and filename.endswith(".json") and not filename.startswith("StreamingHistory_podcast_"):
                     # Construct the full file path
                     file_path = os.path.join(directory, filename)
+                    print (file_path)
 
                     # Load data from the JSON file with UTF-8 encoding
                     with open(file_path, 'r', encoding='utf-8') as file:

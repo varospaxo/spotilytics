@@ -105,9 +105,11 @@ def process_zip():
             for i, (album, count) in enumerate(top_10_albums, start=1):
                 result_text.insert(tk.END, f"{i}. {album} - {count} times\n")
 
-            result_text.insert(tk.END, "\nUnique Devices:\n")
+            result_text.insert(tk.END, "\nUnique Devices (Unordered):\n")
+            i=0
             for device in unique_devices:
-                result_text.insert(tk.END, f"{device}\n")
+                i=i+1
+                result_text.insert(tk.END, f"{i}. {device}\n")
 
         else:
             result_text.delete(1.0, tk.END)  # Clear previous results

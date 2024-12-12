@@ -31,6 +31,8 @@ def extract_zip(zip_file_path):
 
 if __name__ == "__main__":
     zip_file_path = input("Enter the path to the ZIP file: ")
+    x=10
+    x=int(input("Enter the number of top artists and tracks to display: "))
 
     unzipped_dir = extract_zip(zip_file_path)
 
@@ -40,8 +42,12 @@ if __name__ == "__main__":
         print("\nError occurred while unzipping the file.")
 
 # Specify the directory where your JSON files are located
-directory = str(unzipped_dir + '/MyData/')  # Replace with the actual directory path
-
+    if os.path.exists(os.path.join(unzipped_dir, "MyData/")):
+        directory = os.path.join(unzipped_dir, "MyData/")
+    elif os.path.exists(os.path.join(unzipped_dir, "Spotify Account Data/")):
+        directory = os.path.join(unzipped_dir, "Spotify Account Data/")
+    else:
+        print("\nError: Neither 'MyData' nor 'Spotify Account Data' folder found in the unzipped directory.")
 # Create an HTML file to save the output
 html_output_file = str(unzipped_dir + "/output.html")
 
@@ -84,7 +90,7 @@ with open(html_output_file, "w") as html_file:
 
     # Loop through files in the directory
     for filename in os.listdir(directory):
-        if filename.startswith("StreamingHistory") and filename.endswith(".json"):
+        if filename.startswith("StreamingHistory") and filename.endswith(".json") and not filename.startswith("StreamingHistory_podcast_"):
             # Construct the full file path
             file_path = os.path.join(directory, filename)
 
