@@ -136,8 +136,8 @@ with open(html_output_file, "w") as html_file:
             track_playtime[track_key] = minutes_played
 
     # Sort the artists and tracks by total playtime in descending order
-    top_artists = sorted(artist_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
-    top_tracks = sorted(track_playtime.items(), key=lambda x: x[1], reverse=True)[:10]
+    top_artists = sorted(artist_playtime.items(), key=lambda x: x[1], reverse=True)[:x]
+    top_tracks = sorted(track_playtime.items(), key=lambda x: x[1], reverse=True)[:x]
 
     # Calculate the total playtime in minutes
     total_playtime_minutes = sum(entry["msPlayed"] / 60000 for entry in all_data)
@@ -148,12 +148,12 @@ with open(html_output_file, "w") as html_file:
     write_to_html(f"End of dataset: {last_end_time}")
     write_to_html(f"Total Playtime: {total_playtime_minutes:.2f} minutes")
 
-    write_to_html("<h3>Top 10 Tracks:</h3>")
+    write_to_html(f"<h3>Top {x} Tracks:</h3>")
     for i, (track_key, total_track_playtime) in enumerate(top_tracks, 1):
         artist_name, track_name = track_key
         write_to_html(f"{i}. {track_name} by {artist_name} - {total_track_playtime:.2f} minutes")
 
-    write_to_html("<h3>Top 10 Artists:</h3>")
+    write_to_html(f"<h3>Top {x} Artists:</h3>")
     for i, (artist_name, total_artist_playtime) in enumerate(top_artists, 1):
         write_to_html(f"{i}. {artist_name} - {total_artist_playtime:.2f} minutes")
 
@@ -179,9 +179,9 @@ with open(html_output_file, "w") as html_file:
     sorted_search_queries = sorted(search_query_freq.items(), key=lambda x: x[1], reverse=True)
 
     # Get the top 10 unique search queries
-    top_10_search_queries = sorted_search_queries[:10]
+    top_10_search_queries = sorted_search_queries[:x]
 
-    write_to_html("<h3>Top 10 Artists:</h3>")
+    write_to_html(f"<h3>Top {x} Artists:</h3>")
     for i, (query, frequency) in enumerate(top_10_search_queries, 1):
         write_to_html(f"{i}. '{query}' - {frequency} times")
 

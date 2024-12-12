@@ -130,12 +130,12 @@ print(f"End of dataset: {last_end_time}")
 
 print(f"\nTotal Playtime: {total_playtime_minutes:.2f} minutes")
 
-print("\nTop 10 Tracks:")
+print(f"\nTop {x} Tracks:")
 for i, (track_key, total_track_playtime) in enumerate(top_tracks, 1):
     artist_name, track_name = track_key
     print(f"{i}. {track_name} by {artist_name} - {total_track_playtime:.2f} minutes")
 
-print("\nTop 10 Artists:")
+print(f"\nTop {x} Artists:")
 for i, (artist_name, total_artist_playtime) in enumerate(top_artists, 1):
     print(f"{i}. {artist_name} - {total_artist_playtime:.2f} minutes")
 
@@ -163,7 +163,7 @@ sorted_search_queries = sorted(search_query_freq.items(), key=lambda x: x[1], re
 top_10_search_queries = sorted_search_queries[:x]
 
 # Display the top 10 search queries and their frequencies
-print("\nTop 10 Search Queries:")
+print(f"\nTop {x} Search Queries:")
 for i, (query, frequency) in enumerate(top_10_search_queries, 1):
     print(f"{i}. '{query}' - {frequency} times")
     
