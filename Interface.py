@@ -30,7 +30,7 @@ def process_zip():
             raise ValueError("The value of x must be a positive integer.")
     except ValueError:
         result_text.delete(1.0, tk.END)
-        result_text.insert(tk.END, f"Error: No value entered for number of results. Defaulting to top 10 results.")
+        result_text.insert(tk.END, f"Note: No value entered for number of results. Defaulting to top 10 results.")
         x=10
 
     zip_file_path = filedialog.askopenfilename(filetypes=[("ZIP Files", "*.zip")])
