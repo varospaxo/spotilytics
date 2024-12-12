@@ -1,8 +1,3 @@
-zipfile
-os
-json
-random
-string
-tkinter
+tk
 datetime
-collections
+fpdf
