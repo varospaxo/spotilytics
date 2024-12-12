@@ -25,7 +25,11 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
   ```sh
    cd spotilytics
    ```
-3. To run `Spotilytics GUI`, use the command:
+3. Change your directory to `spotilytics`:
+  ```sh
+   pip install -r requirements.txt
+   ```
+4. To run `Spotilytics GUI`, use the command:
   ```sh
    python spotilytics.py
    ```
@@ -45,10 +49,10 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
   ```sh
    python Flask.py
    ```
-4. Once Spotilytics is running, enter the number of results required.
-5. Then, select the zip file (for GUI) or provide the path to the zip file without quotes (for CLI).
-6. The data will be extracted automatically and displayed as output.
-7. Optionally, you can export the data as pdf (spotilytics.py)
+5. Once Spotilytics is running, enter the number of results required.
+6. Then, select the zip file (for GUI) or provide the path to the zip file without quotes (for CLI).
+7. The data will be extracted automatically and displayed as output.
+8. Optionally, you can export the data as pdf (spotilytics.py)
 
 ## Features of Spotilytics
 &#9679; Extracts Account Identity Data.<br>
