@@ -41,7 +41,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
   ```sh
    python Flask.py
    ```
-4. Once Spotilytics is running, enter the number of resuls required.
+4. Once Spotilytics is running, enter the number of results required.
 5. Then, select the zip file (for GUI) or provide the path to the zip file without quotes (for CLI).
 6. The data will be extracted automatically and displayed as output.
 
