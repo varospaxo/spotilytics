@@ -27,6 +27,10 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
    ```
 3. To run `Spotilytics GUI`, use the command:
   ```sh
+   python spotilytics.py
+   ```
+<B>OR</B> To run `Spotilytics GUI (Yearly Streaming History)`, use the command:
+  ```sh
    python Interface.py
    ```
 <B>OR</B> To run `Spotilytics GUI (Extended Streaming History)`, use the command:
@@ -44,6 +48,7 @@ You might wonder, why not use the Spotify API? Well, the Spotify API requires us
 4. Once Spotilytics is running, enter the number of results required.
 5. Then, select the zip file (for GUI) or provide the path to the zip file without quotes (for CLI).
 6. The data will be extracted automatically and displayed as output.
+7. Optionally, you can export the data as pdf (spotilytics.py)
 
 ## Features of Spotilytics
 &#9679; Extracts Account Identity Data.<br>
